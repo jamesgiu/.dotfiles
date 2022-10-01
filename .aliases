@@ -13,4 +13,5 @@ alias ksh="ksh $1"
 alias kcopy="kubeCopy $1 $2"
 alias mssh="mssh $1"
 alias mlog="mlog $1"
+alias ss=ezSed $1 $2 $3
 alias pu=popupWhenDone

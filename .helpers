@@ -60,3 +60,9 @@ function mssh() {
   oc rsh $pod
 }
 
+# $1 = value to replace
+# $2 = new value
+# $3 = filename matcher, surrounded in quotes (e.g. "*.yml")
+function ezSed() {
+  sed -i -e "s/$1/$2/g" $3
+}
