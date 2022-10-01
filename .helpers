@@ -1,0 +1,62 @@
+function cdLs () { 
+  \cd $1
+  ls 
+}
+
+function cdTree () {
+  tree $1 -L 1
+  \cd $1 1>/dev/null
+}
+
+# $1 = directory to copy
+# $2 = pod name
+function kubeCopy () {
+  tar -cvz -C $1 . | kubectl exec -ti $2  -- sh -c 'cd /tmp && tar -xzv' 
+}
+
+# $1 = pod to match on via grep search
+function ksh() {
+  pod=$(kubectl get pods | grep $1 | cut -d" " -f1)
+  kubectl exec --stdin --tty $pod -- /bin/bash
+}
+
+# $1 = pod to match on via grep search
+function klog() {
+  pod=$(kubectlget pods | grep $1 | cut -d" " -f1)
+  kubectl logs $pod -f
+}
+
+# $1 = cmd to check for in ps aux
+function popupWhenDone() {
+  while true
+  do
+    pid=$(ps aux | grep $1 | awk '{print $2}')
+
+    if [[ -n $pid ]]
+      then
+
+      wait $pid
+
+      if [[ $? -ne 0 ]]
+      then 
+        pop_report -m "Command $1 has failed" -d 500
+      else 
+        pop_report -m "Command $1 succeeded" -d 500
+      fi
+    fi 
+   sleep 5s
+  done
+}
+
+# $1 = pod to match on via grep search
+function mlog() {
+  pod=$(oc get pods | grep $1 | cut -d" " -f1)
+  oc logs $pod -f
+}
+
+# $1 = pod to match on via grep search
+function mssh() {
+  pod=$(oc get pods | grep $1 | cut -d" " -f1)
+  oc rsh $pod
+}
+
