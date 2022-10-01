@@ -1,0 +1,16 @@
+source .helpers
+
+alias tb="/usr/bin/jetbrains-toolbox"
+alias cd="cdTree $1"
+alias ..='cd ..'
+alias -- -='cd -'
+alias pls='sudo $(history -p !!)'
+alias ls='ls -lah --color=auto'
+alias kc=\kubectl
+alias dockerExec="docker run --rm -it --entrypoint bash $1"
+alias klog="klog $1"
+alias ksh="ksh $1"
+alias kcopy="kubeCopy $1 $2"
+alias mssh="mssh $1"
+alias mlog="mlog $1"
+alias pu=popupWhenDone

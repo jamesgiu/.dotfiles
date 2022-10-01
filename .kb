@@ -1,0 +1,10 @@
+# Ctrl Arrow keys
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+# Home
+bindkey  "^[[H"   beginning-of-line
+# End
+bindkey  "^[[F"   end-of-line
+# Del
+bindkey  "^[[3~"  delete-char
+bindkey -e
