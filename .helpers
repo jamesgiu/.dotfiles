@@ -22,7 +22,7 @@ function ksh() {
 
 # $1 = pod to match on via grep search
 function klog() {
-  pod=$(kubectlget pods | grep $1 | cut -d" " -f1)
+  pod=$(kubectl get pods | grep $1 | cut -d" " -f1)
   kubectl logs $pod -f
 }
 
