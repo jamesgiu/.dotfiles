@@ -1,4 +1,4 @@
-source .helpers
+source ~/.helpers
 
 alias tb="/usr/bin/jetbrains-toolbox"
 alias cd="cdTree $1"
