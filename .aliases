@@ -5,7 +5,7 @@ alias cd="cdTree $1"
 alias ..='cd ..'
 alias -- -='cd -'
 alias pls='sudo $(history -p !!)'
-alias ls='ls -lah --color=auto'
+alias ls='exa --icons -1 -F --colour-scale -a --group-directories-first'
 alias kc=\kubectl
 alias dockerExec="docker run --rm -it --entrypoint bash $1"
 alias klog="klog $1"
